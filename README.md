@@ -20,4 +20,4 @@ A simple web-based Course Registration System built using **HTML, CSS, and JavaS
 3. Start registering courses!
 
 ## Project Structure
-# course-registration-system
+
