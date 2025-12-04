@@ -4,23 +4,46 @@
     <meta charset="UTF-8">
     <title>Course Registration System</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Course Registration System</h1>
+    <!-- Top Navigation -->
+    <header>
+        <h1>Course Registration System</h1>
+        <p class="tagline">Register. Learn. Grow.</p>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to Your Academic Dashboard</h2>
+        <p>Select courses, manage your registrations, and build your semester plan with ease.</p>
+    </section>
+
+    <!-- Main Container -->
     <div class="container">
-        <div class="courses">
-            <h2>Available Courses</h2>
-            <ul id="courseList"></ul>
+
+        <!-- Available Courses -->
+        <div class="box">
+            <h2>📚 Available Courses</h2>
+            <div id="courseList" class="list"></div>
         </div>
 
-        <div class="registered">
-            <h2>My Registered Courses</h2>
-            <ul id="registeredList"></ul>
+        <!-- Registered Courses -->
+        <div class="box">
+            <h2>📝 My Registered Courses</h2>
+            <div id="registeredList" class="list"></div>
         </div>
+
     </div>
 
+    <footer>
+        <p>© 2025 Course Registration System | Designed by Vaaruni Sharma</p>
+    </footer>
+
     <script src="app.js"></script>
+
 </body>
 </html>
+
+
