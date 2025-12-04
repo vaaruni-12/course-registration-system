@@ -3,61 +3,63 @@ let courses = [
     {id: 1, name: "Data Structures", credits: 4},
     {id: 2, name: "Operating Systems", credits: 3},
     {id: 3, name: "Computer Networks", credits: 3},
-    {id: 4, name: "Database Systems", credits: 4}
+    {id: 4, name: "Database Management Systems", credits: 4},
+    {id: 5, name: "Software Engineering", credits: 3}
 ];
 
-// Load registered courses from localStorage
+// Load registered courses from LocalStorage
 let registered = JSON.parse(localStorage.getItem("registeredCourses")) || [];
 
 function save() {
     localStorage.setItem("registeredCourses", JSON.stringify(registered));
 }
 
-// Display course list
+// Load available courses
 function loadCourses() {
     let list = document.getElementById("courseList");
     list.innerHTML = "";
 
     courses.forEach(course => {
-        let li = document.createElement("li");
-        li.textContent = course.name + " (" + course.credits + " Credits)";
-        
-        let btn = document.createElement("button");
-        btn.textContent = "Register";
+        let card = document.createElement("div");
+        card.className = "card";
 
-        btn.onclick = function () {
-            registerCourse(course);
-        };
+        card.innerHTML = `
+            <div>
+                <strong>${course.name}</strong><br>
+                <small>${course.credits} Credits</small>
+            </div>
+            <button class="register-btn">Register</button>
+        `;
 
-        li.appendChild(btn);
-        list.appendChild(li);
+        card.querySelector("button").onclick = () => registerCourse(course);
+
+        list.appendChild(card);
     });
 }
 
-// Display registered course list
+// Load registered courses
 function loadRegistered() {
     let list = document.getElementById("registeredList");
     list.innerHTML = "";
 
     registered.forEach(course => {
-        let li = document.createElement("li");
-        li.textContent = course.name;
+        let card = document.createElement("div");
+        card.className = "card";
 
-        let btn = document.createElement("button");
-        btn.textContent = "Remove";
+        card.innerHTML = `
+            <div><strong>${course.name}</strong></div>
+            <button class="remove-btn">Remove</button>
+        `;
 
-        btn.onclick = function () {
-            removeCourse(course);
-        };
+        card.querySelector("button").onclick = () => removeCourse(course);
 
-        li.appendChild(btn);
-        list.appendChild(li);
+        list.appendChild(card);
     });
 }
 
 function registerCourse(course) {
     if (registered.find(c => c.id === course.id)) {
-        alert("Course already registered!");
+        alert("Already Registered!");
         return;
     }
     registered.push(course);
@@ -74,3 +76,7 @@ function removeCourse(course) {
 // Initial load
 loadCourses();
 loadRegistered();
+
+loadCourses();
+loadRegistered();
+
